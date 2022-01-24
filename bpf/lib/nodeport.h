@@ -1541,9 +1541,9 @@ int tail_nodeport_ipv4_dsr(struct __ctx_buff *ctx)
 		goto drop_err;
 	if (!l2_hdr_required)
 		goto out_send;
-	else if (!revalidate_data_with_eth_hlen(ctx, &data, &data_end, &ip4,
-						__ETH_HLEN))
-		return DROP_INVALID;
+	//else if (!revalidate_data_with_eth_hlen(ctx, &data, &data_end, &ip4,
+	//					__ETH_HLEN))
+	//	return DROP_INVALID;
 
 	if (eth_store_daddr(ctx, fib_params.l.dmac, 0) < 0) {
 		ret = DROP_WRITE_ERROR;
@@ -1665,9 +1665,9 @@ int tail_nodeport_nat_ipv4(struct __ctx_buff *ctx)
 	if (!l2_hdr_required)
 		goto out_send;
 	// TODO(brb) check whether it's still needed
-	else if (!revalidate_data_with_eth_hlen(ctx, &data, &data_end, &ip4,
-						__ETH_HLEN))
-		return DROP_INVALID;
+	//else if (!revalidate_data_with_eth_hlen(ctx, &data, &data_end, &ip4,
+	//					__ETH_HLEN))
+	//	return DROP_INVALID;
 
 	if (eth_store_daddr(ctx, fib_params.l.dmac, 0) < 0) {
 		ret = DROP_WRITE_ERROR;
@@ -1946,9 +1946,9 @@ static __always_inline int rev_nodeport_lb4(struct __ctx_buff *ctx, int *ifindex
 		if (!l2_hdr_required)
 			return CTX_ACT_OK;
 		// TODO(brb) ditto
-		else if (!revalidate_data_with_eth_hlen(ctx, &data, &data_end,
-							&ip4, __ETH_HLEN))
-			return DROP_INVALID;
+		//else if (!revalidate_data_with_eth_hlen(ctx, &data, &data_end,
+		//					&ip4, __ETH_HLEN))
+		//	return DROP_INVALID;
 
 		if (fib_ret != 0) {
 			union macaddr smac =
